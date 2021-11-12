@@ -16,6 +16,18 @@ import AuthProvider from './context/AuthProvider';
 import Products from './Pages/Frontend/Products/Products';
 import Reviews from './Pages/Frontend/Reviews/Reviews';
 import Brands from './Pages/Frontend/Brands/Brands';
+import PrivateRoute from './Pages/Frontend/PrivateRoute/PrivateRoute';
+import Shipping from './Pages/Frontend/Shipping/Shipping';
+import Dashboard from './Pages/Frontend/User/Dashboard/Dashboard';
+import PayNow from './Pages/Frontend/User/PayNow/PayNow';
+import Orders from './Pages/Frontend/User/Orders/Orders';
+import UserReview from './Pages/Frontend/User/UserReview/UserReview';
+import ManageOrders from './Pages/Backend/ManageOrders/ManageOrders';
+import CreateProduct from './Pages/Backend/CreateProduct/CreateProduct';
+import MakeAnAdmin from './Pages/Backend/MakeAnAdmin/MakeAnAdmin';
+import AdminDashboard from './Pages/Backend/AdminDashboard/AdminDashboard';
+import ManageProducts from './Pages/Backend/ManageProducts/ManageProducts';
+import AdminPrivateRoute from './Pages/Backend/AdminPrivateRoute/AdminPrivateRoute';
 function App() {
   return (
     <AuthProvider>
@@ -59,6 +71,47 @@ function App() {
             <Route path="/login">
               <Login></Login>
             </Route>
+
+            <PrivateRoute path="/shipping/:id">
+              <Shipping></Shipping>
+            </PrivateRoute>
+
+            {/* User Menu */}
+            <PrivateRoute path="/user/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+
+            <PrivateRoute path="/user/pay-now">
+              <PayNow></PayNow>
+            </PrivateRoute>
+
+            <PrivateRoute path="/user/orders">
+              <Orders></Orders>
+            </PrivateRoute>
+
+            <PrivateRoute path="/user/reviews">
+              <UserReview></UserReview>
+            </PrivateRoute>
+
+            {/* Admin Menu */}
+            <AdminPrivateRoute path="/admin/dashboard">
+              <AdminDashboard></AdminDashboard>
+            </AdminPrivateRoute>
+            <AdminPrivateRoute path="/admin/orders">
+              <ManageOrders></ManageOrders>
+            </AdminPrivateRoute>
+
+            <AdminPrivateRoute path="/admin/products/create">
+              <CreateProduct></CreateProduct>
+            </AdminPrivateRoute>
+
+            <AdminPrivateRoute path="/admin/products/all">
+              <ManageProducts></ManageProducts>
+            </AdminPrivateRoute>
+
+            <AdminPrivateRoute path="/admin/user/role">
+              <MakeAnAdmin></MakeAnAdmin>
+            </AdminPrivateRoute>
           </Switch>
         </main>
         {/* Main Body */}

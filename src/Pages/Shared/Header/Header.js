@@ -4,9 +4,9 @@ import useAuth from '../../../hooks/useAuth';
 import logo from '../../../images/logo.png';
 import noPhoto from '../../../images/no-photo.jpg';
 const Header = () => {
-    const { user, logout } = useAuth();
+    const { user, logout, admin } = useAuth();
     return (
-        <header className="">
+        <header className="header">
             {/* header top area start */}
             <div className="header-top-wrap">
                 <div className="container">
@@ -42,7 +42,10 @@ const Header = () => {
                                             <div className="top-user-thumb">
                                                 <img src={user.photoURL ? user.photoURL : noPhoto} />
                                             </div>
-                                            <Link to="/">{user.displayName}</Link>
+                                            {user && admin?.role === 'customer' ? <Link to="/user/dashboard">{user.displayName}</Link> : <Link to="/admin/dashboard">{user.displayName}</Link>}
+                                        </li>
+                                        <li className="header-top-user primary-color">
+                                            <span style={{ cursor: 'pointer' }} onClick={logout}>Logout</span>
                                         </li>
                                     </> :
                                         <li className="header-top-login">
@@ -95,6 +98,49 @@ const Header = () => {
                                 <NavLink to="/contact-us" className="nav-link" activeClassName="active">Contact Us</NavLink>
                             </li>
                         </ul>
+                    </div>
+                    <div className="text-end">
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerAdmin" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarTogglerAdmin">
+                            <ul className="navbar-nav col-lg-auto me-lg-auto justify-content-center">
+                                {user && admin?.role === 'admin' && <>
+                                    <li className="nav-item">
+                                        <NavLink exact to="/admin/dashboard" className="nav-link" activeClassName="active">Dashboard</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink to="/admin/orders" className="nav-link" activeClassName="active">Manage All Orders</NavLink>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Products
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <NavLink to="/admin/products/all" className="nav-link" activeClassName="active">Manage Products</NavLink>
+                                            <NavLink to="/admin/products/create" className="nav-link" activeClassName="active">Add Products</NavLink>
+                                        </ul>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink to="/admin/user/role" className="nav-link" activeClassName="active">Make an Admin</NavLink>
+                                    </li>
+                                </>}
+                                {user && admin?.role === 'customer' && <>
+                                    <li className="nav-item">
+                                        <NavLink exact to="/user/dashboard" className="nav-link" activeClassName="active">Dashboard</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink to="/user/pay-now" className="nav-link" activeClassName="active">Pay Now</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink to="/user/orders" className="nav-link" activeClassName="active">My Orders</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink to="/user/reviews" className="nav-link" activeClassName="active">Reviews</NavLink>
+                                    </li>
+                                </>}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>

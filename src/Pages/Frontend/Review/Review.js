@@ -16,12 +16,12 @@ const Review = ({ review }) => {
                         <div className="rating">
                             <span>Rating: </span>
                             {
-                                Array.from(Array(parseInt(rating))).map((_, index) => (
+                                Array.from(Array(parseInt(rating ?? 0))).map((_, index) => (
                                     <i key={index} className="fas fa-star"></i>
                                 ))
                             }
                         </div>
-                        <p className="text-justify lh-base">{description.slice(0, 500)}</p>
+                        <p className="text-justify lh-base">{description?.slice(0, 500)}</p>
                     </div>
                 </div>
             </div>

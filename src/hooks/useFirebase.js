@@ -9,8 +9,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
-    const [admin, setAdmin] = useState(false);
-    const [token, setToken] = useState('');
+    const [admin, setAdmin] = useState({});
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -78,7 +77,6 @@ const useFirebase = () => {
         signInWithPopup(auth, githubProvider)
             .then((result) => {
                 const user = result.user;
-                console.log(user);
                 // save user to the database
                 saveUser(user.email, user.displayName, 'PUT');
                 setAuthError('');
@@ -94,10 +92,6 @@ const useFirebase = () => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
-                getIdToken(user)
-                    .then(idToken => {
-                        setToken(idToken);
-                    })
             } else {
                 setUser({})
             }
@@ -106,11 +100,13 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [auth]);
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/users/${user.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setAdmin(data.admin))
-    // }, [user.email]);
+    useEffect(() => {
+        setIsLoading(true);
+        fetch(`http://localhost:5000/users/?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data[0]))
+            .finally(() => setIsLoading(false));
+    }, [user.email]);
 
     const logout = () => {
         setIsLoading(true);
@@ -123,8 +119,7 @@ const useFirebase = () => {
     }
 
     const saveUser = (email, displayName, method) => {
-        const user = { email: email, name: displayName };
-        console.log(user);
+        const user = { email: email, name: displayName, role: 'customer', created_at: new Date().toDateString() };
         fetch('http://localhost:5000/users', {
             method: method,
             headers: {
@@ -139,7 +134,6 @@ const useFirebase = () => {
         isLoading,
         authError,
         admin,
-        token,
         registerUser,
         loginUser,
         signInWithGoogle,
