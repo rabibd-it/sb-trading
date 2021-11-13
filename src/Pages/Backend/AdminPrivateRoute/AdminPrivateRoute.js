@@ -20,7 +20,7 @@ const AdminPrivateRoute = ({ children, ...rest }) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: "/",
+                            pathname: "/admin/dashboard",
                             state: { from: location }
                         }}
                     />
