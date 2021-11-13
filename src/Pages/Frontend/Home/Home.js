@@ -137,7 +137,7 @@ const Home = () => {
                                     <h2 className="title">Global Excellence through Quality of Service</h2>
                                 </div>
                                 <div className="content">
-                                    <div className="icon">
+                                    <div className="icon d-none d-md-block">
                                         <img src={logo} alt="logo" />
                                     </div>
                                     <p>
@@ -318,7 +318,7 @@ const Home = () => {
                                     <div className="popular-selling-title">
                                         <h4>popular selling brands</h4>
                                     </div>
-                                    <div className="see-all-brand">
+                                    <div className="see-all-brand d-none d-md-block">
                                         <Link to="/brands">See all Makes</Link>
                                     </div>
                                 </div>

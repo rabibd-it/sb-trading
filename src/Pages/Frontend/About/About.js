@@ -41,7 +41,7 @@ const About = () => {
                                     <h2 className="title">Global Excellence through Quality of Service</h2>
                                 </div>
                                 <div className="content">
-                                    <div className="icon">
+                                    <div className="icon d-none d-md-block">
                                         <img src={logo} alt="logo" />
                                     </div>
                                     <p>

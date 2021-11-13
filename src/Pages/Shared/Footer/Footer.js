@@ -205,7 +205,7 @@ const Footer = () => {
                                         <div className="content">
                                             <p>We know that honesty and transparency friendly customer service</p>
                                         </div>
-                                        <div className="payment-card">
+                                        <div className="payment-card d-none d-md-block">
                                             <img src={'https://i.ibb.co/fGbt7wt/payment-card.png'} alt="payment-card" />
                                         </div>
                                     </div>
@@ -217,12 +217,12 @@ const Footer = () => {
                 <div className="copyright-area">
                     <div className="container">
                         <div className="row align-items-center">
-                            <div className="col-md-8">
+                            <div className="col-md-8 col-12">
                                 <div className="copyright-text">
                                     <p>Copyright © 2021 SB Trading. All Rights Reserved.</p>
                                 </div>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-4 col-12">
                                 <div className="copyright-text f-right">
                                     <p>Developed By: <a href="https://facebook.com/robi.tpi" target="_blank">Rabiul Islam</a></p>
                                 </div>

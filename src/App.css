@@ -688,7 +688,7 @@
   color: #ff5400;
 }
 
-/* 17. Exclusive-features */
+/* Exclusive-features */
 .section-title .line {
   line-height: 1;
   display: flex;
@@ -849,7 +849,7 @@
   }
 }
 
-/* 21. Footer-brand */
+/* Footer-brand */
 .footer-brand-area {
   background: #f6f6f6;
 }
@@ -871,7 +871,7 @@
   max-width: 100%;
 }
 
-/* 25. Footer */
+/* Footer */
 .footer-bg {
   background: #1b1a24;
 }
@@ -1138,7 +1138,7 @@
   background: #fff;
 }
 
-/* 24. Contact */
+/* Contact */
 .contact-info-wrap .section-title .title {
   text-transform: capitalize;
 }
@@ -1226,7 +1226,7 @@
   margin-bottom: 25px;
 }
 
-/* 14. Inventory */
+/* Inventory */
 .inventory-top-meta > ul {
   display: flex;
   align-items: center;
@@ -2060,7 +2060,7 @@
   padding-bottom: 55px;
 }
 
-/* 15. Author-profile */
+/* Author-profile */
 .author-profile-wrap {
   background: #fff;
   border: 1px solid #ebebeb;
@@ -2205,4 +2205,84 @@
   color: #6a6a6a;
   padding: 5px 14px;
   line-height: 1;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 767px) {
+  .banner-area .banner-content h2 {
+    font-size: 50px;
+    line-height: 60px;
+  }
+  .banner-area .banner-title {
+    top: 20%;
+  }
+  .about-img {
+    margin-bottom: 20px;
+  }
+  .exclusive-featured-area
+    .row:nth-child(2)
+    [class*="col-"]:first-child
+    .exc-featured-item {
+    margin-right: 0;
+    text-align: center;
+  }
+  .exclusive-featured-area
+    .row:nth-child(2)
+    [class*="col-"]:last-child
+    .exc-featured-item {
+    margin-left: 0;
+    text-align: center;
+  }
+  .exclusive-featured-area
+    .row:nth-child(2)
+    [class*="col-"]:first-child
+    .exc-featured-item
+    .icon {
+    margin: 10px auto;
+  }
+  .exc-featured-item {
+    text-align: center;
+  }
+  .exclusive-featured-area
+    .row:nth-child(2)
+    [class*="col-"]:last-child
+    .exc-featured-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slick-list {
+    margin: 0 -7px !important;
+  }
+
+  .slick-slide > div {
+    padding: 0 7px !important;
+  }
+  .footer-right-wrap {
+    padding: 10px 0 0 10px;
+  }
+  .footer-payment-method-wrap .content {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+  .copyright-text .f-right {
+    float: none !important;
+    text-align: center;
+  }
+  .login-wrap {
+    padding: 20px;
+  }
+  .login-form .action {
+    flex-direction: column;
+  }
+  .review-bg .col {
+    width: 100%;
+  }
+  .contact-form-wrap .login-wrap {
+    margin: 20px 0;
+    padding: 20px;
+  }
 }
