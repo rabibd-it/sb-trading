@@ -10,7 +10,7 @@ const CreateProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // Create Product
     const onSubmit = (data, e) => {
-        axios.post(`http://localhost:5000/products`, data)
+        axios.post(`https://powerful-brushlands-43185.herokuapp.com/products`, data)
             .then(function (res) {
                 if (res.data.insertedId) {
                     toast.success(`Product Inserted Successfully`);

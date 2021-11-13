@@ -14,7 +14,7 @@ const Orders = () => {
 
     // load products data
     useEffect(() => {
-        axios.get(`http://localhost:5000/my-orders?email=${user.email}`)
+        axios.get(`https://powerful-brushlands-43185.herokuapp.com/my-orders?email=${user.email}`)
             .then(function (res) {
                 setOrders(res.data);
             })
@@ -29,7 +29,7 @@ const Orders = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
-            axios.delete(`http://localhost:5000/my-orders/${id}`)
+            axios.delete(`https://powerful-brushlands-43185.herokuapp.com/my-orders/${id}`)
                 .then(function (response) {
                     if (response.data.deletedCount > 0) {
                         toast.success(`Data Deleted Successfully`);

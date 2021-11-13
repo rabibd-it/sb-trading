@@ -71,6 +71,7 @@ const useFirebase = () => {
             }).finally(() => setIsLoading(false));
     }
 
+
     // Registration and Login Using Github
     const signInWithGithub = (location, history) => {
         setIsLoading(true);
@@ -102,7 +103,7 @@ const useFirebase = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`http://localhost:5000/users/?email=${user.email}`)
+        fetch(`https://powerful-brushlands-43185.herokuapp.com/users/?email=${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data[0]))
             .finally(() => setIsLoading(false));
@@ -120,7 +121,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, method) => {
         const user = { email: email, name: displayName, role: 'customer', created_at: new Date().toDateString() };
-        fetch('http://localhost:5000/users', {
+        fetch('https://powerful-brushlands-43185.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

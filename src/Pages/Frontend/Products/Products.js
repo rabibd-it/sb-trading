@@ -9,7 +9,7 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     // load products data
     useEffect(() => {
-        axios.get('http://localhost:5000/products')
+        axios.get('https://powerful-brushlands-43185.herokuapp.com/products')
             .then(function (res) {
                 setProducts(res.data);
             })

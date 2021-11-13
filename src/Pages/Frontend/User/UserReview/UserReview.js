@@ -12,7 +12,7 @@ const UserReview = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // Customer Review
     const onSubmit = (data, e) => {
-        
+
         const reviewData = {
             name: user.displayName ?? '',
             image: user.photoURL ? user.photoURL : 'https://i.ibb.co/Wy1R6rV/no-photo.jpg',
@@ -22,7 +22,7 @@ const UserReview = () => {
             created_at: new Date().toDateString(),
         };
 
-        axios.post(`http://localhost:5000/reviews`, reviewData)
+        axios.post(`https://powerful-brushlands-43185.herokuapp.com/reviews`, reviewData)
             .then(function (res) {
                 if (res.data.insertedId) {
                     toast.success(`Review Inserted Successfully`);

@@ -54,7 +54,7 @@ const Home = () => {
 
     // load products data
     useEffect(() => {
-        axios.get('http://localhost:5000/products')
+        axios.get('https://powerful-brushlands-43185.herokuapp.com/products')
             .then(function (res) {
                 setProducts(res.data);
             })
@@ -66,7 +66,7 @@ const Home = () => {
 
     // load reviews data
     useEffect(() => {
-        axios.get('http://localhost:5000/reviews')
+        axios.get('https://powerful-brushlands-43185.herokuapp.com/reviews')
             .then(function (res) {
                 setReviews(res.data);
             })
@@ -78,7 +78,7 @@ const Home = () => {
 
     // load brands data
     useEffect(() => {
-        axios.get('http://localhost:5000/brands')
+        axios.get('https://powerful-brushlands-43185.herokuapp.com/brands')
             .then(function (res) {
                 setBrands(res.data);
             })

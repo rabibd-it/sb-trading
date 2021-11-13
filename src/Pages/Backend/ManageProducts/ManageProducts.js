@@ -14,7 +14,7 @@ const ManageProducts = () => {
 
     // load products data
     useEffect(() => {
-        axios.get(`http://localhost:5000/products`)
+        axios.get(`https://powerful-brushlands-43185.herokuapp.com/products`)
             .then(function (res) {
                 setProducts(res.data);
             })
@@ -28,7 +28,7 @@ const ManageProducts = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
-            axios.delete(`http://localhost:5000/products/${id}`)
+            axios.delete(`https://powerful-brushlands-43185.herokuapp.com/products/${id}`)
                 .then(function (response) {
                     if (response.data.deletedCount > 0) {
                         toast.success(`Data Deleted Successfully`);

@@ -15,7 +15,7 @@ const Shipping = () => {
 
     // load single product data
     useEffect(() => {
-        axios.get(`http://localhost:5000/products/${id}`)
+        axios.get(`https://powerful-brushlands-43185.herokuapp.com/products/${id}`)
             .then(function (res) {
                 setProduct(res.data);
             })
@@ -38,7 +38,7 @@ const Shipping = () => {
         data.product_description = product.description;
         data.status = 'pending';
         data.created_at = new Date();
-        axios.post(`http://localhost:5000/products/order`, data)
+        axios.post(`https://powerful-brushlands-43185.herokuapp.com/products/order`, data)
             .then(function (res) {
                 if (res.data.insertedId) {
                     toast.success(`Order Successfully Completed`);

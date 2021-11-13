@@ -8,7 +8,7 @@ const Brands = () => {
     const [brands, setBrands] = useState([]);
     // load brands data
     useEffect(() => {
-        axios.get('http://localhost:5000/brands')
+        axios.get('https://powerful-brushlands-43185.herokuapp.com/brands')
             .then(function (res) {
                 setBrands(res.data);
             })

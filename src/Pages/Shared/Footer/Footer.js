@@ -49,7 +49,7 @@ const Footer = () => {
 
     // load dealers data
     useEffect(() => {
-        axios.get('http://localhost:5000/dealers')
+        axios.get('https://powerful-brushlands-43185.herokuapp.com/dealers')
             .then(function (res) {
                 setDealers(res.data);
             })
@@ -61,7 +61,7 @@ const Footer = () => {
 
     // load products data
     useEffect(() => {
-        axios.get('http://localhost:5000/products')
+        axios.get('https://powerful-brushlands-43185.herokuapp.com/products')
             .then(function (res) {
                 setProducts(res.data);
             })

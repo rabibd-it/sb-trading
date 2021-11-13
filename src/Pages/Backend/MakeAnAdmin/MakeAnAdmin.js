@@ -10,7 +10,7 @@ const MakeAnAdmin = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // Create Product
     const onSubmit = (data, e) => {
-        axios.put(`http://localhost:5000/users/admin`, data)
+        axios.put(`https://powerful-brushlands-43185.herokuapp.com/users/admin`, data)
             .then(function (res) {
                 if (res.data.message) {
                     toast.error(res.data.message);

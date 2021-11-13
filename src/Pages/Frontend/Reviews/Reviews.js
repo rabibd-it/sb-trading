@@ -8,7 +8,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     // load reviews data
     useEffect(() => {
-        axios.get('http://localhost:5000/reviews')
+        axios.get('https://powerful-brushlands-43185.herokuapp.com/reviews')
             .then(function (res) {
                 setReviews(res.data);
             })

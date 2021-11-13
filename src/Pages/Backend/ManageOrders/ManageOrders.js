@@ -14,7 +14,7 @@ const ManageOrders = () => {
 
     // load products data
     useEffect(() => {
-        axios.get(`http://localhost:5000/my-orders`)
+        axios.get(`https://powerful-brushlands-43185.herokuapp.com/my-orders`)
             .then(function (res) {
                 setOrders(res.data);
             })
@@ -29,7 +29,7 @@ const ManageOrders = () => {
         const proceed = window.confirm('Are you sure, you want to change status?');
         if (proceed) {
             const data = { status: status === 'pending' ? 'complete' : 'pending' };
-            axios.put(`http://localhost:5000/my-orders/${id}`, data)
+            axios.put(`https://powerful-brushlands-43185.herokuapp.com/my-orders/${id}`, data)
                 .then(res => {
                     toast.success(`Status Updated Successfully`);
                 })
@@ -43,7 +43,7 @@ const ManageOrders = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
-            axios.delete(`http://localhost:5000/my-orders/${id}`)
+            axios.delete(`https://powerful-brushlands-43185.herokuapp.com/my-orders/${id}`)
                 .then(function (response) {
                     if (response.data.deletedCount > 0) {
                         toast.success(`Data Deleted Successfully`);
