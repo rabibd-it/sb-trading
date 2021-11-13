@@ -35,8 +35,7 @@ const useFirebase = () => {
             })
             .catch((error) => {
                 setAuthError(error.message);
-            })
-            .finally(() => setIsLoading(false));
+            });
     }
 
     // Custom Login
@@ -50,8 +49,7 @@ const useFirebase = () => {
             })
             .catch((error) => {
                 setAuthError(error.message);
-            })
-            .finally(() => setIsLoading(false));
+            });
     }
 
 
@@ -62,13 +60,13 @@ const useFirebase = () => {
             .then((result) => {
                 const user = result.user;
                 // save user to the database
-                saveUser(user.email, user.displayName, 'PUT');
+                saveUser(user.email, user.displayName, '', '', 'PUT');
                 setAuthError('');
                 const destination = location?.state?.from || '/';
                 history.replace(destination);
             }).catch((error) => {
                 setAuthError(error.message);
-            }).finally(() => setIsLoading(false));
+            });
     }
 
 
@@ -79,13 +77,13 @@ const useFirebase = () => {
             .then((result) => {
                 const user = result.user;
                 // save user to the database
-                saveUser(user.email, user.displayName, 'PUT');
+                saveUser(user.email, user.displayName, '', '', 'PUT');
                 setAuthError('');
                 const destination = location?.state?.from || '/';
                 history.replace(destination);
             }).catch((error) => {
                 setAuthError(error.message);
-            }).finally(() => setIsLoading(false));
+            });;
     }
 
     // observer user state
