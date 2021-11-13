@@ -95,7 +95,7 @@ const CreateProduct = () => {
                                             <div className="col-lg-6">
                                                 <div className="form-grp">
                                                     <label htmlFor="condition">Condition <span>*</span></label>
-                                                    <input type="number" className="form-control" id="condition" placeholder="Condition" {...register("condition", { required: true })} />
+                                                    <input type="text" className="form-control" id="condition" placeholder="Condition" {...register("condition", { required: true })} />
                                                     {errors.condition && <span className="text-danger w-100">This field is required</span>}
                                                 </div>
                                             </div>
