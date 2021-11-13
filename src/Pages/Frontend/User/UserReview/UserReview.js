@@ -15,6 +15,7 @@ const UserReview = () => {
 
         const reviewData = {
             name: user.displayName ?? '',
+            email: user.email ?? '',
             image: user.photoURL ? user.photoURL : 'https://i.ibb.co/Wy1R6rV/no-photo.jpg',
             rating: parseInt(data.rating),
             status: 'pending',
