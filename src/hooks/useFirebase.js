@@ -16,7 +16,7 @@ const useFirebase = () => {
     const githubProvider = new GithubAuthProvider();
 
     // Registration Using Email and Password
-    const registerUser = (email, password, name, history) => {
+    const registerUser = (email, password, name, phone, address, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -24,7 +24,7 @@ const useFirebase = () => {
                 const newUser = { email, displayName: name };
                 setUser(newUser);
                 // save user to the database
-                saveUser(email, name, 'POST');
+                saveUser(email, name, phone, address, 'POST');
                 // send name to firebase after creation
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -102,11 +102,9 @@ const useFirebase = () => {
     }, [auth]);
 
     useEffect(() => {
-        setIsLoading(true);
         fetch(`https://powerful-brushlands-43185.herokuapp.com/users/?email=${user.email}`)
             .then(res => res.json())
-            .then(data => setAdmin(data[0]))
-            .finally(() => setIsLoading(false));
+            .then(data => setAdmin(data[0]));
     }, [user.email]);
 
     const logout = () => {
@@ -119,8 +117,8 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
-    const saveUser = (email, displayName, method) => {
-        const user = { email: email, name: displayName, role: 'customer', created_at: new Date().toDateString() };
+    const saveUser = (email, displayName, phone, address, method) => {
+        const user = { email: email, name: displayName, role: 'customer', phone: phone, address: address, created_at: new Date().toDateString() };
         fetch('https://powerful-brushlands-43185.herokuapp.com/users', {
             method: method,
             headers: {

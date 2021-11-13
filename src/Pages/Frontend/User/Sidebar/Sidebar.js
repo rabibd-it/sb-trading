@@ -1,8 +1,37 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
 
 const Sidebar = () => {
-    const { user } = useAuth();
+    const { user, admin } = useAuth();
+    const [isLoading, setIsLoading] = useState(false);
+    const [orders, setOrders] = useState([]);
+    const [reviews, setReviews] = useState([]);
+
+    // load products data
+    useEffect(() => {
+        axios.get(`https://powerful-brushlands-43185.herokuapp.com/my-orders?email=${user.email}`)
+            .then(function (res) {
+                setOrders(res.data);
+            })
+            .catch(function (error) {
+
+            });
+        setIsLoading(false);
+    }, [setOrders]);
+
+    // load reviews data
+    useEffect(() => {
+        axios.get(`https://powerful-brushlands-43185.herokuapp.com/reviews?email=${user.email}`)
+            .then(function (res) {
+                setReviews(res.data);
+            })
+            .catch(function (error) {
+
+            });
+        setIsLoading(false);
+    }, [setReviews]);
+
     return (
         <div className="col-xl-4 col-lg-5 col-md-9 order-2 order-lg-0">
             <aside className="author-profile-sidebar">
@@ -11,15 +40,14 @@ const Sidebar = () => {
                         <img style={{ maxHeight: '150px', width: '150px' }} src={user.photoURL ? user.photoURL : 'https://i.ibb.co/Wy1R6rV/no-photo.jpg'} alt={user.displayName} />
                     </div>
                     <h5 className="name">{user.displayName}</h5>
-                    <span className="des">Customer</span>
+                    <span className="des">{admin?.role}</span>
                     <div className="location">
-                        <p><i className="fas fa-map-marker-alt"></i> Shahid Kazol Sarani, Palaspole, Satkhira.</p>
+                        <p><i className="fas fa-map-marker-alt"></i>{admin?.address}</p>
                     </div>
                     <div className="author-profile-list">
                         <ul>
-                            <li><i className="fas fa-shopping-basket"></i>Total Orders <span>0</span></li>
-                            <li><i className="fas fa-comment-dots"></i>Total Reviews <span>1</span></li>
-                            <li><i className="fas fa-truck"></i>Total Delivery<span>2</span></li>
+                            <li><i className="fas fa-shopping-basket"></i>Total Orders <span>{orders.length}</span></li>
+                            <li><i className="fas fa-comment-dots"></i>Total Reviews <span>{reviews.length}</span></li>
                         </ul>
                     </div>
                     <div className="author-profile-btn">
@@ -30,7 +58,7 @@ const Sidebar = () => {
                         <ul>
                             <li>
                                 <i className="fas fa-phone"></i>
-                                <a href={`mailto:${user?.phone}`}>{user.phone ?? '+880171001122'}</a>
+                                <a href={`mailto:${user?.phone}`}>{admin?.phone}</a>
                             </li>
                             <li>
                                 <i className="far fa-envelope"></i>

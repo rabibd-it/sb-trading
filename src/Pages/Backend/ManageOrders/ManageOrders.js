@@ -86,39 +86,37 @@ const ManageOrders = () => {
                                 </div>
                             </div>
                             {
-                                orders.map(order => <>
-                                    <div className="inventory-list-item">
-                                        <div className="inventory-list-thumb">
-                                            <img style={{ maxHeight: '250px' }} className="w-100" src={order.product_image ?? 'https://i.ibb.co/Wy1R6rV/no-photo.jpg'} alt={order.product_name} title={order.product_name} />
-                                        </div>
-                                        <div className="inventory-list-content">
-                                            <div className="inv-content-top">
-                                                <ul>
-                                                    <li className="option">
-                                                        {
-                                                            order.status === 'pending' ? <a className="black new" href="#" onClick={() => handleStatus(order._id, order.status)}>Pending</a> : <a className="new primary-bg" href="#" onClick={() => handleStatus(order._id, order.status)}>Complete</a>
-                                                        }
+                                orders.map(order => <div key={order._id} className="inventory-list-item">
+                                    <div className="inventory-list-thumb">
+                                        <img style={{ maxHeight: '250px' }} className="w-100" src={order.product_image ?? 'https://i.ibb.co/Wy1R6rV/no-photo.jpg'} alt={order.product_name} title={order.product_name} />
+                                    </div>
+                                    <div className="inventory-list-content">
+                                        <div className="inv-content-top">
+                                            <ul>
+                                                <li className="option">
+                                                    {
+                                                        order.status === 'pending' ? <a className="black new" href="#" onClick={() => handleStatus(order._id, order.status)}>Pending</a> : <a className="new primary-bg" href="#" onClick={() => handleStatus(order._id, order.status)}>Complete</a>
+                                                    }
 
-                                                    </li>
-                                                    <li className="price">${order.product_price}</li>
-                                                </ul>
-                                            </div>
-                                            <h4>
-                                                <Link to={`/shipping/${order.product_id}`}>{order.product_name}</Link>
-                                            </h4>
-                                            <p className="location">
-                                                {order.product_description?.slice(0, 100)}
-                                            </p>
-                                            <div className="inv-item-meta">
-                                                <ul>
-                                                    <li className="call"><a href="#" className="primary-bg text-white" onClick={() => handleDelete(order._id)}><i className="fas fa-trash"></i>Delete</a></li>
-                                                    <li>Quantity : {order?.quantity}</li>
-                                                    <li>Name : {order?.name}</li>
-                                                </ul>
-                                            </div>
+                                                </li>
+                                                <li className="price">${order.product_price}</li>
+                                            </ul>
+                                        </div>
+                                        <h4>
+                                            <Link to={`/shipping/${order.product_id}`}>{order.product_name}</Link>
+                                        </h4>
+                                        <p className="location">
+                                            {order.product_description?.slice(0, 100)}
+                                        </p>
+                                        <div className="inv-item-meta">
+                                            <ul>
+                                                <li className="call"><a href="#" className="primary-bg text-white" onClick={() => handleDelete(order._id)}><i className="fas fa-trash"></i>Delete</a></li>
+                                                <li>Quantity : {order?.quantity}</li>
+                                                <li>Name : {order?.name}</li>
+                                            </ul>
                                         </div>
                                     </div>
-                                </>
+                                </div>
                                 )
                             }
                         </div>

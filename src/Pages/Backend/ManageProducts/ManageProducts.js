@@ -71,40 +71,38 @@ const ManageProducts = () => {
                                 </div>
                             </div>
                             {
-                                products.map(product => <>
-                                    <div className="inventory-list-item">
-                                        <div className="inventory-list-thumb">
-                                            <img style={{ maxHeight: '250px' }} className="w-100" src={product.image ?? 'https://i.ibb.co/Wy1R6rV/no-photo.jpg'} alt={product.name} title={product.name} />
-                                        </div>
-                                        <div className="inventory-list-content">
-                                            <div className="inv-content-top">
-                                                <ul>
-                                                    <li className="option">
-                                                        {
-                                                            product.status === 'pending' ? <a className="black new" href="#">Pending</a> : <a className="new primary-bg" href="#">Complete</a>
-                                                        }
+                                products.map(product => <div key={product._id} className="inventory-list-item">
+                                    <div className="inventory-list-thumb">
+                                        <img style={{ maxHeight: '250px' }} className="w-100" src={product.image ?? 'https://i.ibb.co/Wy1R6rV/no-photo.jpg'} alt={product.name} title={product.name} />
+                                    </div>
+                                    <div className="inventory-list-content">
+                                        <div className="inv-content-top">
+                                            <ul>
+                                                <li className="option">
+                                                    {
+                                                        product.status === 'pending' ? <a className="black new" href="#">Pending</a> : <a className="new primary-bg" href="#">Complete</a>
+                                                    }
 
-                                                    </li>
-                                                    <li className="price">${product.price}</li>
-                                                </ul>
-                                            </div>
-                                            <h4>
-                                                <Link to={`/shipping/${product._id}`}>{product.name}</Link>
-                                            </h4>
-                                            <p className="location">
-                                                {product.description?.slice(0, 100)}
-                                            </p>
-                                            <div className="inv-item-meta">
-                                                <ul>
-                                                    <li className="call"><a href="#" className="primary-bg text-white" onClick={() => handleDelete(product._id)}><i className="fas fa-trash"></i>Delete</a></li>
-                                                    <li><i className="fas fa-cog"></i> {product.transmission}</li>
-                                                    <li><i className="fas fa-gas-pump"></i> {product.fuel_type}</li>
-                                                    <li><i className="fas fa-subway"></i> {product.mileage}</li>
-                                                </ul>
-                                            </div>
+                                                </li>
+                                                <li className="price">${product.price}</li>
+                                            </ul>
+                                        </div>
+                                        <h4>
+                                            <Link to={`/shipping/${product._id}`}>{product.name}</Link>
+                                        </h4>
+                                        <p className="location">
+                                            {product.description?.slice(0, 100)}
+                                        </p>
+                                        <div className="inv-item-meta">
+                                            <ul>
+                                                <li className="call"><a href="#" className="primary-bg text-white" onClick={() => handleDelete(product._id)}><i className="fas fa-trash"></i>Delete</a></li>
+                                                <li><i className="fas fa-cog"></i> {product.transmission}</li>
+                                                <li><i className="fas fa-gas-pump"></i> {product.fuel_type}</li>
+                                                <li><i className="fas fa-subway"></i> {product.mileage}</li>
+                                            </ul>
                                         </div>
                                     </div>
-                                </>
+                                </div>
                                 )
                             }
                         </div>

@@ -16,7 +16,7 @@ const Register = () => {
 
     // Customr Registration
     const onSubmit = data => {
-        registerUser(data.email, data.password, data.name, history);
+        registerUser(data.email, data.password, data.name, data.phone, data.address, history);
     };
 
     // Google Registration
@@ -43,10 +43,26 @@ const Register = () => {
                                         <h3 className="widget-title">Register</h3>
                                         {authError && <div className="text-danger fw-bold mb-3">{authError}</div>}
                                         <form onSubmit={handleSubmit(onSubmit)} className="login-form">
+                                            <div className="row">
+                                                <div className="col-lg-7">
+                                                    <div className="form-grp">
+                                                        <label htmlFor="name">Name <span>*</span></label>
+                                                        <input type="text" className="form-control" id="name" placeholder="Name" {...register("name", { required: true })} />
+                                                        {errors.name && <span className="text-danger w-100">This field is required</span>}
+                                                    </div>
+                                                </div>
+                                                <div className="col-lg-5">
+                                                    <div className="form-grp">
+                                                        <label htmlFor="phone">Phone <span>*</span></label>
+                                                        <input type="text" className="form-control" id="phone" placeholder="Phone" {...register("phone", { required: true })} />
+                                                        {errors.phone && <span className="text-danger w-100">This field is required</span>}
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div className="form-grp">
-                                                <label htmlFor="name">Name <span>*</span></label>
-                                                <input type="name" className="form-control" id="name" placeholder="Name" {...register("name", { required: true })} />
-                                                {errors.name && <span className="text-danger w-100">This field is required</span>}
+                                                <label htmlFor="address">Address <span>*</span></label>
+                                                <input type="text" className="form-control" id="address" placeholder="Address" {...register("address", { required: true })} />
+                                                {errors.address && <span className="text-danger w-100">This field is required</span>}
                                             </div>
                                             <div className="form-grp">
                                                 <label htmlFor="email">Email <span>*</span></label>

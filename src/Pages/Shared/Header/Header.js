@@ -112,11 +112,11 @@ const Header = () => {
                                     <li className="nav-item">
                                         <NavLink to="/admin/orders" className="nav-link" activeClassName="active">Manage All Orders</NavLink>
                                     </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <li className="nav-item dropdown">
+                                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Products
                                         </a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <NavLink to="/admin/products/all" className="nav-link" activeClassName="active">Manage Products</NavLink>
                                             <NavLink to="/admin/products/create" className="nav-link" activeClassName="active">Add Products</NavLink>
                                         </ul>
